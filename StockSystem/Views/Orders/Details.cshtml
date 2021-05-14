@@ -1,0 +1,50 @@
+﻿@model StockSystem.Models.Orders
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Orders</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        @*<dt>
+            @Html.DisplayNameFor(model => model.Employees.UniqueId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Employees.UniqueId)
+        </dd>*@
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Products.AddedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Products.AddedBy)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Quantity)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.OrderId }, new { @class = " " }) 
+    | @Html.ActionLink("Back to List", "Index",new { }, new { @class = " " })
+</p>

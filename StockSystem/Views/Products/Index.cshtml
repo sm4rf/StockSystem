@@ -1,0 +1,126 @@
+﻿@model IEnumerable<StockSystem.Models.Products>
+
+@using StockSystem.Models
+@using System.Data.Entity
+
+@{ ViewBag.Title = "Index";
+    ApplicationDbContext db = new ApplicationDbContext();
+
+    var categories = db.Categories.Include(c => c.SubCategories).ToList(); }
+
+<h2>Products</h2>
+
+<ul class="list-inline">
+    <li class="pb-1">@Html.ActionLink("Create New", "Create", new { }, new { @class = "d-inline-block" })
+    </li>
+    <li class="pb-1">@Html.ActionLink("Categories", "Index", "Categories", new { }, new { @class = "" })</li>
+    <li>@Html.ActionLink("SubCategories", "Index", "SubCategories", new { }, new { @class = "" })</li>
+</ul>
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped table-hover" id="Datatable">
+                <thead>
+                    <tr>
+                        <th>
+                            @Html.DisplayNameFor(model => model.ProductName)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Category.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.SubCategory.Description)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Supplier.Name)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.AddedBy)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Cost)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Price)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.UnitSize)
+                        </th>
+                        <th>
+                            @Html.DisplayNameFor(model => model.Quantity)
+                        </th>
+
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Category.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SubCategory.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Supplier.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AddedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Cost)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.UnitSize)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Quantity)
+            </td>
+
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ProductId }, new { @class = " " })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ProductId }, new { @class = " " })
+            </td>
+        </tr>}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $(".HasList").click(function () {
+            $(".SubList").toggleClass("d-none");
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $(".HasSubMenu").click(function () {
+            $(".SubMenuList").toggleClass("d-none");
+        });
+    });
+
+
+    $(document).ready(function () {
+        $('#con').autocomplete({
+            source: '/home/AutoComplete'
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#Datatable').DataTable();
+    });
+</script>

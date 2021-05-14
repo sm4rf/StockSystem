@@ -1,0 +1,111 @@
+﻿@model IEnumerable<StockSystem.Models.Employees>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employees</h2>
+
+<ul class="list-inline">
+    <li>
+        @Html.ActionLink("Create New", "Create", new { }, new { @class = " d-inline-block" })
+    </li>
+</ul>
+<div class="table-responsive">
+    <table class="table table-striped table-hover " id="Datatable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.UniqueId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SurName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Position)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Contact)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Hours)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.WagePH)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Pay)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.TaxCode)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.UniqueId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SurName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Position)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Contact)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Hours)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.WagePH)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Pay)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TaxCode)
+                    </td>
+                    <td>
+                        @if (item.FilePath != null)
+                        {
+                            <a href="@item.FilePath">File</a>
+                        }
+                        
+                        @Html.ActionLink("Edit", "Edit", new { id = item.EmployeeId }, new { @class = " " }) 
+                        @Html.ActionLink("Details", "Details", new { id = item.EmployeeId }, new { @class = " " }) 
+                        @Html.ActionLink("Delete", "Delete", new { id = item.EmployeeId }, new { @class = " " })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#con').autocomplete({
+            source: '/home/AutoCompleteEmployee'
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#Datatable').DataTable();
+    });
+</script>

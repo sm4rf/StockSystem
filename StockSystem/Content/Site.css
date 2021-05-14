@@ -1,0 +1,126 @@
+﻿@media(min-width:768px){
+.login-section{
+    margin:80px 0px 20px 0px;
+}
+.login-container{
+    width:50%;
+    margin:0 auto;
+   border:1px solid;
+    padding:40px;
+    border-color:whitesmoke;
+}
+    .login-box {
+        padding: 35px 20px;
+        margin: 0;
+        background-color: white;
+        border-color: whitesmoke;
+        border: 1px solid whitesmoke;
+    } 
+    .tab-pane h4{
+        text-align:center
+            ;
+        margin:10px 0px 0px 0px;
+    }
+    .SubList {
+        list-style: none;
+        position: relative;
+        left: 0;
+        padding-left: 0px;
+        margin-top: 2px;
+       
+    }
+    .SubMenuList {
+        list-style: none;
+        position: absolute;
+        left: 0;
+        padding-left: 0;
+        margin-top: 10px;
+       
+    }
+    .HasList {
+        padding: 10px 10px;
+        background-color: #00a2ff;
+        width: 130px;
+        margin: 2px 0px;
+        color: white;
+        display:block
+    }
+        .HasList::after {
+            content: '>';
+            float: right;
+        }
+    .HasSubMenu::after {
+        content: '>';
+        float: right;
+    }
+    .category{
+        
+        position:relative;
+        padding:10px 0px
+      
+    }
+    .SubMenuList > li {
+        padding: 10px 10px;
+        background-color: #00a1ff;
+        color: white;
+        width: 130px;
+        margin: 2px 0px;
+        
+    }
+    .SubList > li {
+        padding: 10px 10px;
+        background-color: #00a1ff;
+        color: white;
+        width:130px
+        ;margin:2px 0px
+        ;
+        
+    }
+    .SubMenuList > li > a {
+        color: white
+    }
+        .SubList > li > a {
+            color: white
+        }
+   
+   
+}
+.tb{
+    color:lightgray;
+}
+.tb.active{
+        color:grey;
+        font-weight:bold
+}
+@media(max-width:767px) {
+    .login-section {
+        margin: 20px 0px;
+    }
+
+    .login-container {
+        width: 95%;
+        margin: 0 auto;
+        background-color: #00a1ff;
+        padding: 10px;
+    }
+
+    .login-box {
+        padding: 10px 10px;
+        margin: 0;
+        background-color: white
+    }
+
+    .tab-pane h4 {
+        text-align: center;
+        margin: 10px 0px 0px 0px;
+    }
+}
+
+.tb {
+    color: lightgray;
+}
+
+    .tb.active {
+        color: grey;
+        font-weight: bold
+    }

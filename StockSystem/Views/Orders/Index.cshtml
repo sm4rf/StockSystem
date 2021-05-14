@@ -1,0 +1,59 @@
+﻿@model IEnumerable<StockSystem.Models.Orders>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Orders</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create", new { }, new { @class=" "})
+</p>
+<div class="table-responsive">
+    <table class="table table-striped table-hover" id="Datatable">
+        <thead>
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Products.ProductName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Date)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Quantity)
+                </th>
+                <th>
+                    Actions
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Products.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Date)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Quantity)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.OrderId }, new { @class = " " })
+                        @Html.ActionLink("Details", "Details", new { id = item.OrderId }, new { @class = " " })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.OrderId }, new { @class = " " })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function() {
+    $('#Datatable').DataTable();
+} );
+</script>

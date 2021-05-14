@@ -1,0 +1,49 @@
+﻿@model IEnumerable<StockSystem.Models.SubCategory>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Sub-Categories</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create",new { }, new { @class = " " })
+</p>
+<div class="table-responsive">
+    <table class="table table-hover table-striped " id="Datatable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Category.Description)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Description)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Category.Description)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Description)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SubCategoryId }, new { @class = " " })
+                        @Html.ActionLink("Details", "Details", new { id = item.SubCategoryId }, new { @class = " " })
+                        @*@Html.ActionLink("Delete", "Delete", new { id=item.SubCategoryId })*@
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script>
+    $(document).ready(function () {
+        $('#Datatable').DataTable();
+    });
+</script>

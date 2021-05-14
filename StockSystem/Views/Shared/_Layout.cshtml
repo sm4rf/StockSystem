@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+  
+    <link href="~/Content/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/Site.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css" integrity="sha512-aOG0c6nPNzGk+5zjwyJaoRUgCdOrfSDhmMID2u4+OIslr0GjpLKo7Xm0Ao3xmpM4T8AmIouRkqwj1nrdVsLKEQ==" crossorigin="anonymous" />
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous"></script>
+    <script src="https://use.fontawesome.com/b2d2335d62.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <link href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css" rel="stylesheet" />
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.2/css/bootstrap.css" rel="stylesheet" />
+    <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.24/js/dataTables.bootstrap4.min.js"></script>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            
+                @Html.ActionLink("inBar", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+
+                    @if (User.IsInRole("Manager") || User.IsInRole("Supervisor") || User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">@Html.ActionLink("Products", "Index", "Products", new { },new {@class="nav-link" })</li>
+
+                        <li class="nav-item">@Html.ActionLink("Orders", "Index", "Orders", new { },new {@class="nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Suppliers", "Index", "Suppliers", new { },new {@class="nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Employees", "Index", "Employees", new { },new {@class="nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Users", "Index", "Applicationusers", new { },new {@class="nav-link" })</li>
+                    }
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <li class="nav-item">@Html.ActionLink("Register Role", "RegisterRole", "Account", new { },new {@class="nav-link" })</li>
+                    }
+                    @if (User.IsInRole("Bartender") || User.IsInRole("Server"))
+                    {
+
+                        <li class="nav-item">@Html.ActionLink("Profile", "Index", "Profile", new { },new {@class="nav-link" })</li>
+                        <li class="nav-item">@Html.ActionLink("Submit Request", "Mail", "Profile", new { },new {@class="nav-link" })</li>
+                    }
+
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </nav>
+    <div class="container body-content mt-2 mb-2">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @DateTime.Now.Year - inBar</p>
+        </footer>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+
+    <script src="~/Content/js/bootstrap.min.js"></script>
+    <script src="~/Content/js/bootstrap.bundle.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

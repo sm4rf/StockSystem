@@ -1,0 +1,39 @@
+﻿@{ ViewBag.Title = "Home Page"; }
+
+<style>
+    .bg-overlay {
+        margin-top: 6%;
+        text-align: center;
+        background: linear-gradient(rgba(0,0,0,.7), rgba(0,0,0,.7)), url("/content/img/front.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center center;
+        color: #fff;
+        height: 450px;
+        padding-top: 170px;
+    }
+</style>
+
+@if (TempData["verifyemail"] != null)
+{
+<div class=" alert alert-success">
+    <h2>@TempData["verifyemail"]</h2>
+</div>}
+
+<div class="container bg-overlay">
+    <div class="row text-center">
+        <div align="center">
+            <h1 class="title ml-auto col-sm-12">Welcome to inBar!</h1>
+        </div>
+        <div class="row text-center mx-auto">
+            <div class="col-sm-12 mx-auto">
+                <h3 class="message mx-auto">
+                </h3>
+                <br><br><br><br>
+                <div class="col-sm-12 mx-auto">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

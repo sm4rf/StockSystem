@@ -1,0 +1,18 @@
+namespace StockSystem.Migrations
+{
+    using System;
+    using System.Data.Entity.Migrations;
+    
+    public partial class addtbls11 : DbMigration
+    {
+        public override void Up()
+        {
+            AddColumn("dbo.Employees", "UniqueId", c => c.String());
+        }
+        
+        public override void Down()
+        {
+            DropColumn("dbo.Employees", "UniqueId");
+        }
+    }
+}

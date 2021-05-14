@@ -1,0 +1,78 @@
+﻿@model IEnumerable<StockSystem.Models.Supplier>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Suppliers</h2>
+
+<ul class="list-inline">
+    <li>
+        @Html.ActionLink("Create New", "Create", new { }, new { @class = " d-inline-block" })
+    </li>
+</ul>
+
+<div class="table-responsive">
+    <table class="table table-striped table-hover" id="Datatable">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Name)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Town)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PostCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ContactNo)
+                </th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Town)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PostCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ContactNo)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SupplierId }, new { @class = " " })
+                        @Html.ActionLink("Details", "Details", new { id = item.SupplierId }, new { @class = " " })
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SupplierId }, new { @class = " " })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#con').autocomplete({
+            source: '/home/AutoCompleteSuppliers'
+        });
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        $('#Datatable').DataTable();
+    });
+</script>
